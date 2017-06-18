@@ -28,9 +28,9 @@ ServerTCP::ServerTCP()
 }
 ///------------------------------------------------------------------------------------------------------
 
-ServerTCP::ServerTCP(int port, ExecutorDeComandos *exec)
+ServerTCP::ServerTCP(int port, EstacaoBase *eb)
 {
-    ptrExecutorDeComandos = exec;
+    estacaoBase = eb;
     portNumber = port;
     socketfd = socket(AF_INET, SOCK_STREAM, 0); //obtém o socket do sistema
     ///AF_INET = socket que aceita endereços ipv4
@@ -52,7 +52,7 @@ ServerTCP::ServerTCP(int port, ExecutorDeComandos *exec)
     puts("Bind efetuado com sucesso\n");
 
     // Ouvindo por conexoes
-    listen(socketfd, 5); //marco esse socket como passivo, que só excuta conexões e aceita no máximo 1 conexao pendentes em sua fila
+    listen(socketfd, 5); //marco esse socket como passivo, que só excuta conexões e aceita no máximo 5 conexões pendentes em sua fila
 }
 ///------------------------------------------------------------------------------------------------------
 
@@ -88,39 +88,14 @@ void ServerTCP::acceptConections()
                 perror("Erro ao receber dados do cliente: ");
 
             }
+            else if(resposta[1] == 255) //isso é para eu finalizar a thread
+            {
+                return;
+            }
             else
             {
-
-                for(int i = 1; i< tamanho; )
-                {
-                    printf("tamanho: %d\n", tamanho);///teste
-                    printf("resposta[0]: %d\n", (int)resposta[0]);///teste
-                    if(tamanho< 2*(int)resposta[0]+1)
-                    {
-                        printf("deu errado aqui\n");
-                        break; ///se a resposta é menor que esse valor, então o comando chegou quebrado
-                    }
-
-                    Comando c;
-                    cout<<(int)resposta[i]<<endl;
-                    cout<<(int)resposta[i+1]<<endl;
-                    c.setTipoDeComando(resposta[i]);
-                    c.setDescritorDoComando(resposta[i+1]);
-                    ptrExecutorDeComandos->insereComandoNaLista(c);
-                    i = i+2;
-                }
-
-                ///teste
-                //resposta[tamanho] = '\0';
-                //printf("O cliente falou: %s\n", resposta);
-
+                estacaoBase->changeVelocityValue((float)resposta[1]);
             }
-
-            /*if (strcmp(resposta, "end") == 0) {
-                close(conexao);
-                printf("Servidor finalizado...\n");
-                return;
-            }*/
         }
     }
 }

@@ -1,6 +1,6 @@
 #include "estacaobase.h"
 #include "ui_estacaobase.h"
-#include <string>
+
 
 EstacaoBase::EstacaoBase(QWidget *parent) :
     QMainWindow(parent),
@@ -71,4 +71,13 @@ void EstacaoBase::on_pushButtonSendToEmbededSystem_clicked()
     ui->lineEditCommand->setText("");
     ui->lineEditDescriptor->setText("");
     commandsVector.clear();
+}
+
+void EstacaoBase::changeVelocityValue(float value)
+{
+    QFont font = ui->labelVelocityValue->font();
+    font.setPointSize(20);
+    ui->labelVelocityValue->setStyleSheet("QLabel { background-color : bold; color : red; }");
+    ui->labelVelocityValue->setText(QString::number(value));
+    ui->labelVelocityValue->setFont(font);
 }

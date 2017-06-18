@@ -15,6 +15,8 @@
     #include <sys/types.h>
     #include <netinet/in.h>
     #include <arpa/inet.h>
+    #include <thread>
+    #include "estacaobase.h"
 
     using namespace std;
     /*
@@ -31,6 +33,7 @@
             int socketfd; //retorna do método de criação de um socket
             string clienteIp; //ip do cliente
             int clientePort; //porta da aplicação no cliente
+            EstacaoBase *estacaoBase;
 
     public:
         /**
@@ -41,9 +44,8 @@
         /**
         *Descição: sobrecarga do construtor da classe
         *Argumento: port => (int) indica a porta na qual o servidor ficará escutando
-        *Argumento: port => (ExecutorDeComandos*) ponteiro com a referência do executor de comandos para poder adicionar comandos à sua lista
         */
-        ServerTCP(int port, ExecutorDeComandos *exec);
+        ServerTCP(int port, EstacaoBase *eb);
 
         /**
         *Descição: Destrutor da classe

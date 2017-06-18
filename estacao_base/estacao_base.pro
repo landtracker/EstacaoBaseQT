@@ -15,11 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         estacaobase.cpp \
     ClietTCP.cpp \
-    Comando.cpp
+    Comando.cpp \
+    ServerTCP.cpp
 
 HEADERS  += estacaobase.h \
     ClientTCP.h \
     Comando.h \
-    defines.h
+    defines.h \
+    ServerTCP.h
 
 FORMS    += estacaobase.ui
+
+QMAKE_CXXFLAGS += -std=c++11
