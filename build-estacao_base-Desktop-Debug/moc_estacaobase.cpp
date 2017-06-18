@@ -40,7 +40,7 @@ static const uint qt_meta_data_EstacaoBase[] = {
 static const char qt_meta_stringdata_EstacaoBase[] = {
     "EstacaoBase\0\0on_pushButtonAddCommand_clicked()\0"
     "on_pushButtonSendToEmbededSystem_clicked()\0"
-    "on_EstacaoBase_destroyed()\0"
+    "update()\0"
 };
 
 void EstacaoBase::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -51,6 +51,7 @@ void EstacaoBase::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         switch (_id) {
         case 0: _t->on_pushButtonAddCommand_clicked(); break;
         case 1: _t->on_pushButtonSendToEmbededSystem_clicked(); break;
+        case 2: _t->update(); break;
         default: ;
         }
     }

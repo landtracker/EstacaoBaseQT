@@ -88,13 +88,21 @@ void ServerTCP::acceptConections()
                 perror("Erro ao receber dados do cliente: ");
 
             }
-            else if(resposta[1] == 255) //isso é para eu finalizar a thread
+            else if(resposta[0] == 255) //isso é para eu finalizar a thread
             {
                 return;
             }
             else
             {
-                estacaoBase->changeVelocityValue((float)resposta[1]);
+                //updates
+                estacaoBase->UpdateLabels(resposta[1], resposta[1], resposta[1], resposta[1]);
+                //estacaoBase->changeVelocityValue((float)resposta[1]);
+                //usleep(500000);
+                //estacaoBase->changeTemperatureValue((float)resposta[1]);
+                //usleep(500000);
+                //estacaoBase->changeInclinationXValue((float)resposta[1]);
+                //usleep(500000);
+                //estacaoBase->changeInclinationYValue((float)resposta[1]);
             }
         }
     }

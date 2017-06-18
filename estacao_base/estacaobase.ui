@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabCommands">
      <attribute name="title">
@@ -218,12 +218,12 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>570</x>
         <y>60</y>
-        <width>81</width>
+        <width>91</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;cm/s&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;[cm/s]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="labelTemperatureValue">
@@ -249,7 +249,7 @@ p, li { white-space: pre-wrap; }
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000; vertical-align:super;&quot;&gt;o&lt;/span&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;C&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000; vertical-align:super;&quot;&gt;o&lt;/span&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;C]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="labelInclinationValueX">
@@ -271,11 +271,11 @@ p, li { white-space: pre-wrap; }
         <x>580</x>
         <y>210</y>
         <width>81</width>
-        <height>21</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000; vertical-align:super;&quot;&gt;o&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000; vertical-align:super;&quot;&gt;o &lt;/span&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="labelGroundInclinationY">
@@ -308,13 +308,13 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>580</x>
-        <y>290</y>
+        <y>300</y>
         <width>81</width>
-        <height>21</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000; vertical-align:super;&quot;&gt;o&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000; vertical-align:super;&quot;&gt;o &lt;/span&gt;&lt;span style=&quot; font-size:20pt; color:#ff0000;&quot;&gt;]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>

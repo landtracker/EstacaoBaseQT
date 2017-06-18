@@ -116,7 +116,7 @@ public:
         labelVelocityValue->setGeometry(QRect(470, 60, 71, 31));
         labelCmPerSeconds = new QLabel(tabEnvironmentInformations);
         labelCmPerSeconds->setObjectName(QString::fromUtf8("labelCmPerSeconds"));
-        labelCmPerSeconds->setGeometry(QRect(570, 60, 81, 31));
+        labelCmPerSeconds->setGeometry(QRect(570, 60, 91, 31));
         labelTemperatureValue = new QLabel(tabEnvironmentInformations);
         labelTemperatureValue->setObjectName(QString::fromUtf8("labelTemperatureValue"));
         labelTemperatureValue->setGeometry(QRect(470, 140, 81, 31));
@@ -128,7 +128,7 @@ public:
         labelInclinationValueX->setGeometry(QRect(470, 220, 71, 31));
         label_4 = new QLabel(tabEnvironmentInformations);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(580, 210, 81, 21));
+        label_4->setGeometry(QRect(580, 210, 81, 41));
         labelGroundInclinationY = new QLabel(tabEnvironmentInformations);
         labelGroundInclinationY->setObjectName(QString::fromUtf8("labelGroundInclinationY"));
         labelGroundInclinationY->setGeometry(QRect(50, 300, 361, 51));
@@ -137,7 +137,7 @@ public:
         labelInclinationValueY->setGeometry(QRect(470, 310, 71, 31));
         label_5 = new QLabel(tabEnvironmentInformations);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(580, 290, 81, 21));
+        label_5->setGeometry(QRect(580, 300, 81, 31));
         tabWidget->addTab(tabEnvironmentInformations, QString());
         EstacaoBase->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(EstacaoBase);
@@ -153,7 +153,7 @@ public:
 
         retranslateUi(EstacaoBase);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(EstacaoBase);
@@ -190,14 +190,14 @@ public:
         labelTemperature->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#00ff00;\">Temperature: </span></p></body></html>", 0, QApplication::UnicodeUTF8));
         labelGroundInclinationX->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#00ff00;\">Ground Inclination x axis:</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         labelVelocityValue->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">0.0</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        labelCmPerSeconds->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">cm/s</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        labelCmPerSeconds->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">[cm/s]</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         labelTemperatureValue->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">25.0</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        labelCelsiusDeeesgr->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000; vertical-align:super;\">o</span><span style=\" font-size:20pt; color:#ff0000;\">C</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        labelCelsiusDeeesgr->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">[</span><span style=\" font-size:20pt; color:#ff0000; vertical-align:super;\">o</span><span style=\" font-size:20pt; color:#ff0000;\">C]</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         labelInclinationValueX->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">0.0</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000; vertical-align:super;\">o</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">[</span><span style=\" font-size:20pt; color:#ff0000; vertical-align:super;\">o </span><span style=\" font-size:20pt; color:#ff0000;\">]</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         labelGroundInclinationY->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#00ff00;\">Ground Inclination y axis:</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         labelInclinationValueY->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">0.0</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000; vertical-align:super;\">o</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("EstacaoBase", "<html><head/><body><p><span style=\" font-size:20pt; color:#ff0000;\">[</span><span style=\" font-size:20pt; color:#ff0000; vertical-align:super;\">o </span><span style=\" font-size:20pt; color:#ff0000;\">]</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tabEnvironmentInformations), QApplication::translate("EstacaoBase", "Environment informations", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
