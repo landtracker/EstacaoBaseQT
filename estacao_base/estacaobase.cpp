@@ -21,7 +21,12 @@ EstacaoBase::EstacaoBase(QWidget *parent) :
         fclose (serverIpFile);
         this->TCPclient = new ClientTCP(port, ip);
     }
+    else
+    {
+        system("killall estacao_base");
+    }
 
+    //this->TCPclient = new ClientTCP(1234, "127.0.0.1");
     //ui->textEdit->setDisabled(true);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -167,4 +172,9 @@ void EstacaoBase::UpdateLabels(char v, char t, char x, char y)
         incX = x;
         incY = y;
     mutex.unlock();
+}
+
+void EstacaoBase::on_EstacaoBase_destroyed()
+{
+    system("killall estacao_base");
 }

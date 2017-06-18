@@ -37,6 +37,8 @@ private slots:
 
     void update();
 
+    void on_EstacaoBase_destroyed();
+
 private:
     Ui::EstacaoBase *ui;
     ClientTCP *TCPclient;

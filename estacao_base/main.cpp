@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     EstacaoBase w;
 
-    ServerTCP server(1234, &w);
+    ServerTCP server(2222, &w);
 
     thread serverThread = server.getServerThread();
 
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     a.exec();
 
-    serverThread.join();
+    //serverThread.join();
 
     return 0;
 }
