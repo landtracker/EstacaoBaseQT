@@ -23,14 +23,18 @@ EstacaoBase::EstacaoBase(QWidget *parent) :
     }
     else
     {
-        system("killall estacao_base");
+        //system("killall estacao_base");
     }
 
     //this->TCPclient = new ClientTCP(1234, "127.0.0.1");
     //ui->textEdit->setDisabled(true);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(1000);
+    timer->start(10000);
+    audioOn = false;
+    audioOff = false;
+    videoOn = false;
+    videoOff = false;
 }
 EstacaoBase::~EstacaoBase()
 {
@@ -41,26 +45,6 @@ void EstacaoBase::insertCommand(char command, char descriptor)
 {
     commandsVector.push_back(command);
     commandsVector.push_back(descriptor);
-
-    if(command == 5)
-    {
-        usleep(500000);
-        system("./video.sh"); ///para abrir o video
-    }
-
-    if(command == 6)
-    {
-        system("killall mplayer &"); ///para abrir o video
-    }
-    if(command == 7)
-    {
-        usleep(500000);
-        system("./audio.sh");///abrir o audio
-    }
-    if(command == 8)
-    {
-        system("killall aplay &");///fecha o audio
-    }
 }
 
 vector<char> EstacaoBase::getCommandsVector()
@@ -70,6 +54,42 @@ vector<char> EstacaoBase::getCommandsVector()
 
 void EstacaoBase::sendCommandsToRover()
 {
+    if(audioOn == true)
+    {
+        usleep(500000);
+        //process = new QProcess(this);
+        //system("nc -l 7777 | aplay &");///abrir o audio
+        //system("./audio &");///abrir o audio
+        //QStringList argo,list;
+        //argo <<"./audio.sh";
+        //list <<"/usr/bin/bash";
+
+        //process->setEnvironment(list);
+       // QDir directory("./home/lucas/Dropbox/UTFPR/7_periodo/oficina_de_integracao_3/codigos/Estacao_Base/build-estacao_base-Desktop-Debug/");
+        //QString path = directory.filePath("audio");
+
+
+        //process.start(path);
+        //process->start("audio", QStringList());
+        //process->waitForStarted();
+        //process->write("./audio.sh &\n");
+        //process->waitForFinished();
+       // process.start("nc -l 7777 | aplay", QStringList() << "/home/lucas/test.txt");
+        //process.start("test.sh", arg);
+        //process.waitForFinished(0);
+        //system("./home/lucas/Dropbox/UTFPR/7_periodo/oficina_de_integracao_3/codigos/Estacao_Base/build-estacao_base-Desktop-Debug/audio");///abrir o audio
+        //process->start("nc -l 7777 | aplay",  QStringList() << "test");
+        //QProcess::execute("xterm -e ./audio");
+        processAudio.start("xterm -e ./audio");
+        audioOn = false;
+    }
+    if(audioOff == true)
+    {
+        system("killall audio &");///fecha o audio
+        system("fuser 7777/tcp -k &");///fecha o audio
+        audioOff = false;
+    }
+
     char commandToSend[512];
 
     commandToSend[0] = commandsVector.size()/2;
@@ -79,7 +99,23 @@ void EstacaoBase::sendCommandsToRover()
         commandToSend[i+1] = commandsVector[i];
     }
 
+    if(videoOn == true)
+    {
+        usleep(500000);
+       // system("./video.sh"); ///para abrir o video
+        processVideo.start("./video.sh");
+        videoOn = false;
+    }
+
+    if(videoOff == true)
+    {
+        system("killall mplayer &"); ///para abrir o video
+        system("fuser 2234/tcp -k &"); ///para abrir o video
+        videoOff = false;
+    }
     TCPclient->sendMessageToServer(commandToSend, commandsVector.size()+1);
+
+
 }
 
 void EstacaoBase::on_pushButtonAddCommand_clicked()
@@ -90,6 +126,23 @@ void EstacaoBase::on_pushButtonAddCommand_clicked()
     this->insertCommand((char)command, (char)descriptor);
     //printf("%d %d", command, descriptor);
     ui->lineEditCommandsList->setText(ui->lineEditCommandsList->text() + ui->lineEditCommand->text() + " " + ui->lineEditDescriptor->text() + ", ");
+
+    if(command == 5)
+    {
+        videoOn = true;
+    }
+    if(command == 6)
+    {
+        videoOff = true;
+    }
+    if(command == 7)
+    {
+        audioOn = true;
+    }
+    if(command == 8)
+    {
+        audioOff = true;
+    }
 }
 
 void EstacaoBase::on_pushButtonSendToEmbededSystem_clicked()
@@ -101,46 +154,6 @@ void EstacaoBase::on_pushButtonSendToEmbededSystem_clicked()
     commandsVector.clear();
 }
 
-/*void EstacaoBase::changeVelocityValue(float value)
-{
-    mutexVelocity.lock();
-    QFont font = ui->labelVelocityValue->font();
-    font.setPointSize(20);
-    ui->labelVelocityValue->setStyleSheet("QLabel { background-color : bold; color : red; }");
-    ui->labelVelocityValue->setText(QString::number(value));
-    ui->labelVelocityValue->setFont(font);
-    mutexVelocity.unlock();
-}*/
-
-/*void EstacaoBase::changeTemperatureValue(float value)
-{
-    mutexTemperature.lock();
-    QFont font = ui->labelTemperatureValue->font();
-    font.setPointSize(20);
-    ui->labelTemperatureValue->setStyleSheet("QLabel { background-color : bold; color : red; }");
-    ui->labelTemperatureValue->setText(QString::number(value));
-    ui->labelTemperatureValue->setFont(font);
-    mutexTemperature.unlock();
-}*/
-/*
-void EstacaoBase::changeInclinationXValue(float value)
-{
-    QFont font = ui->labelInclinationValueX->font();
-    font.setPointSize(20);
-    ui->labelInclinationValueX->setStyleSheet("QLabel { background-color : bold; color : red; }");
-    ui->labelInclinationValueX->setText(QString::number(value));
-    ui->labelInclinationValueX->setFont(font);
-}
-
-void EstacaoBase::changeInclinationYValue(float value)
-{
-    QFont font = ui->labelInclinationValueY->font();
-    font.setPointSize(20);
-    ui->labelInclinationValueY->setStyleSheet("QLabel { background-color : bold; color : red; }");
-    ui->labelInclinationValueY->setText(QString::number(value));
-    ui->labelInclinationValueY->setFont(font);
-}
-*/
 void EstacaoBase::update()
 {
     mutex.lock();

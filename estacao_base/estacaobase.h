@@ -9,6 +9,8 @@
 #include <mutex>          // std::mutex
 #include <QTimer>
 #include <stdlib.h>     /* srand, rand */
+#include <QProcess>
+#include <QDir>
 
 namespace Ui {
 class EstacaoBase;
@@ -47,6 +49,9 @@ private:
     QTimer *timer;
     char vel, temp, incX, incY;
 
+    bool audioOn, audioOff, videoOn, videoOff;
+
+    QProcess processAudio, processVideo;
 };
 
 #endif // ESTACAOBASE_H
