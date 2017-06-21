@@ -80,13 +80,13 @@ void EstacaoBase::sendCommandsToRover()
         //system("./home/lucas/Dropbox/UTFPR/7_periodo/oficina_de_integracao_3/codigos/Estacao_Base/build-estacao_base-Desktop-Debug/audio");///abrir o audio
         //process->start("nc -l 7777 | aplay",  QStringList() << "test");
         //QProcess::execute("xterm -e ./audio");
-        processAudio.start("xterm -e ./audio");
+        processAudio.start("./audio");
         audioOn = false;
     }
     if(audioOff == true)
     {
         system("killall audio &");///fecha o audio
-        system("fuser 7777/tcp -k &");///fecha o audio
+        //system("fuser 7777/tcp -k &");///fecha o audio
         audioOff = false;
     }
 
@@ -103,14 +103,14 @@ void EstacaoBase::sendCommandsToRover()
     {
         usleep(500000);
        // system("./video.sh"); ///para abrir o video
-        processVideo.start("./video.sh");
+        processVideo.start("./video");
         videoOn = false;
     }
 
     if(videoOff == true)
     {
         system("killall mplayer &"); ///para abrir o video
-        system("fuser 2234/tcp -k &"); ///para abrir o video
+        //system("fuser 2234/tcp -k &"); ///para abrir o video
         videoOff = false;
     }
     TCPclient->sendMessageToServer(commandToSend, commandsVector.size()+1);
