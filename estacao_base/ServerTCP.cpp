@@ -95,7 +95,7 @@ void ServerTCP::acceptConections()
             else
             {
                 //updates
-                estacaoBase->UpdateLabels(resposta[1], resposta[1], resposta[1], resposta[1]);
+                estacaoBase->UpdateLabels(resposta[0], resposta[1], resposta[2], resposta[3]);
                 //estacaoBase->changeVelocityValue((float)resposta[1]);
                 //usleep(500000);
                 //estacaoBase->changeTemperatureValue((float)resposta[1]);

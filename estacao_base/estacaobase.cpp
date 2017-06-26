@@ -30,7 +30,7 @@ EstacaoBase::EstacaoBase(QWidget *parent) :
     //ui->textEdit->setDisabled(true);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(10000);
+    timer->start(1000);
     audioOn = false;
     audioOff = false;
     videoOn = false;
@@ -87,6 +87,7 @@ void EstacaoBase::sendCommandsToRover()
     {
         system("killall audio &");///fecha o audio
         //system("fuser 7777/tcp -k &");///fecha o audio
+        processAudio.close();
         audioOff = false;
     }
 
@@ -111,6 +112,7 @@ void EstacaoBase::sendCommandsToRover()
     {
         system("killall mplayer &"); ///para abrir o video
         //system("fuser 2234/tcp -k &"); ///para abrir o video
+        processVideo.close();
         videoOff = false;
     }
     TCPclient->sendMessageToServer(commandToSend, commandsVector.size()+1);
@@ -156,6 +158,7 @@ void EstacaoBase::on_pushButtonSendToEmbededSystem_clicked()
 
 void EstacaoBase::update()
 {
+    float tempAux;
     mutex.lock();
         QFont font = ui->labelVelocityValue->font();
         font.setPointSize(20);
@@ -164,15 +167,35 @@ void EstacaoBase::update()
         ui->labelVelocityValue->setFont(font);
 
         ui->labelTemperatureValue->setStyleSheet("QLabel { background-color : bold; color : red; }");
-        ui->labelTemperatureValue->setText(QString::number((int)temp));
+        /*if(temp>127)
+        {
+              tempAux = (float)(temp*(-1));
+              //tempAux =
+        }
+        else
+        {
+              tempAux = temp;
+        }*/
+
+        ui->labelTemperatureValue->setText(QString::number((int)(temp)));
         ui->labelTemperatureValue->setFont(font);
 
         ui->labelInclinationValueX->setStyleSheet("QLabel { background-color : bold; color : red; }");
-        ui->labelInclinationValueX->setText(QString::number((int)incX));
+        if(incX>127)
+        {
+            int aux = -1*incX;
+            //printf("incx %d\n", incX);
+            ui->labelInclinationValueX->setText(QString("-")+QString::number(aux));
+        }
+        else
+        {
+           ui->labelInclinationValueX->setText(QString::number((char)incX));
+        }
+
         ui->labelInclinationValueX->setFont(font);
 
         ui->labelInclinationValueY->setStyleSheet("QLabel { background-color : bold; color : red; }");
-        ui->labelInclinationValueY->setText(QString::number((int)incY));
+        ui->labelInclinationValueY->setText(QString::number((char)incY));
         ui->labelInclinationValueY->setFont(font);
     mutex.unlock();
 }

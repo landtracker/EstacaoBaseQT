@@ -125,7 +125,7 @@ public:
         labelCelsiusDeeesgr->setGeometry(QRect(570, 140, 71, 31));
         labelInclinationValueX = new QLabel(tabEnvironmentInformations);
         labelInclinationValueX->setObjectName(QString::fromUtf8("labelInclinationValueX"));
-        labelInclinationValueX->setGeometry(QRect(470, 220, 71, 31));
+        labelInclinationValueX->setGeometry(QRect(470, 220, 101, 31));
         label_4 = new QLabel(tabEnvironmentInformations);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(580, 210, 81, 41));
@@ -134,7 +134,7 @@ public:
         labelGroundInclinationY->setGeometry(QRect(50, 300, 361, 51));
         labelInclinationValueY = new QLabel(tabEnvironmentInformations);
         labelInclinationValueY->setObjectName(QString::fromUtf8("labelInclinationValueY"));
-        labelInclinationValueY->setGeometry(QRect(470, 310, 71, 31));
+        labelInclinationValueY->setGeometry(QRect(470, 310, 101, 31));
         label_5 = new QLabel(tabEnvironmentInformations);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setGeometry(QRect(580, 300, 81, 31));
